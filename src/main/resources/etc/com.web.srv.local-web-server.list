@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listEqualsFilesHolder>
+    <listEqualsFiles>
+        <entry>
+            <key>http://schemas.xmlsoap.org/wsdl/2003-02-11.xsd</key>
+            <value>data/local-web-server-files/2003-02-11.xsd</value>
+        </entry>
+        <entry>
+            <key>http://cxf.apache.org/schemas/configuration/cxf-beans.xsd</key>
+            <value>data/local-web-server-files/cxf-beans.xsd</value>
+        </entry>
+        <entry>
+            <key>http://cxf.apache.org/schemas/configuration/parameterized-types.xsd</key>
+            <value>data/local-web-server-files/parameterized-types.xsd</value>
+        </entry>
+        <entry>
+            <key>http://cxf.apache.org/schemas/configuration/security.xsd</key>
+            <value>data/local-web-server-files/security.xsd</value>
+        </entry>
+    </listEqualsFiles>
+</listEqualsFilesHolder>

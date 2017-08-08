@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+           xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+       xsi:schemaLocation="
+         http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+         http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <cm:property-placeholder
+          id="property-placeholder-7e8acd9a-982b-42c7-a5b5-1d97d3517485"
+          persistent-id="com.web.srv.local-web-server"
+          placeholder-prefix="{{" placeholder-suffix="}}">
+    <cm:default-properties>
+      <cm:property name="common.cfg.path" value="" />
+      <cm:property name="common.cfg.file" value="com.web.srv.local-web-server.cfg" />
+    </cm:default-properties>
+  </cm:property-placeholder>
+  <ext:property-placeholder
+          id="property-placeholder-bc2b475e-5901-4db8-8558-cc9d143107de"
+          placeholder-prefix="${" placeholder-suffix="}">
+    <ext:location>file:{{common.cfg.path}}etc/{{common.cfg.file}}</ext:location>
+  </ext:property-placeholder>
+
+  <bean class="com.web.srv.HttpRequestProcessor" id="httpRequestProcessor" scope="singleton"/>
+
+  <camelContext id="blueprint-bean-context" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="SRV.LOCAL.WEB.SERVER.MAIN">
+      <from uri="jetty:http://127.0.0.1:{{local-web-server.port}}?matchOnUriPrefix=true"/>
+      <process ref="httpRequestProcessor"/>
+    </route>
+  </camelContext>
+
+</blueprint>
